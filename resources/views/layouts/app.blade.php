@@ -126,6 +126,7 @@
     
     <div id="app">
         <main class="py-4">
+            @include('flash_messages')
             @yield('content')
     </div>
     <!-- Page footer begins -->

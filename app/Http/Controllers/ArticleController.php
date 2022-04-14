@@ -65,7 +65,8 @@ class ArticleController extends Controller
         $article->save();
         $categories = $request->categories;
         $article->categories()->attach($categories);
-        return redirect("articles");
+        return redirect("articles")
+        ->with('success', 'Article created successfully!');
     }
 
     /**
@@ -127,7 +128,8 @@ class ArticleController extends Controller
         $categories = $request->categories;
         $article->categories()->sync($categories);
 
-        return redirect("articles");
+        return redirect("articles")
+        ->with('success', 'Article updated successfully!');
     }
 
     /**
@@ -143,6 +145,7 @@ class ArticleController extends Controller
         $this->authorize('delete', $article);
         $article->delete();
 
-        return redirect("articles");
+        return redirect("articles")
+        ->with('warning', 'Article deleted successfully!');
     }
 }

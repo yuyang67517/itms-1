@@ -53,7 +53,8 @@ class CategoryController extends Controller
         $category = new Category;
         $category->category_name = $request->category_name;
         $category->save();
-        return redirect("categories");
+        return redirect("categories")
+        ->with('success', 'Category created successfully!');
     }
 
     /**
@@ -108,7 +109,8 @@ class CategoryController extends Controller
        // Getting values from the blade template form
        $category->category_name=  $request->get('category_name');
        $category->save();
-       return redirect("categories");
+       return redirect("categories")
+       ->with('success', 'Category updated successfully!');
 
 
     }
@@ -124,6 +126,7 @@ class CategoryController extends Controller
         //
         $category = Category::find($id);
         $category->delete();
-        return redirect("categories");
+        return redirect("categories")
+        ->with('warning', 'Category deleted successfully!');
     }
 }
