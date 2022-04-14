@@ -40,6 +40,7 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         return View::make('articles.create')->with('categories',$categories);
+        
     }
 
     /**
@@ -51,6 +52,12 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required | max:20' ,
+            'description' => 'required | min:5',
+        ]);
+
+
         $article = new Article;
         $article->title = $request->title;
         $article->description = $request->description;
@@ -108,6 +115,10 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'title' => 'required | max:20' ,
+            'description' => 'required | min:5',
+        ]);
          $article = Article::findOrFail($id);
         // Getting values from the blade template form
         $article->title =  $request->get('title');

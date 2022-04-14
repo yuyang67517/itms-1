@@ -7,9 +7,13 @@
 
     <p>
         @foreach($category->articles as $article) 
-            <h3>{{$article->title}}</h3>
+            
+            <h2><a href = {{ URL::to('articles/' . $article->id) }}>{{$article->title}}</a></h2>
+
         @endforeach 
     </p>
+
+    <a class="btn btn-secondary" href="{{ url('/categories') }}" role="button">Go Back</a>
 
 </div>    
 

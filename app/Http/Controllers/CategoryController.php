@@ -46,6 +46,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'category_name' => 'required | max:20' ,
+        ]);
         //
         $category = new Category;
         $category->category_name = $request->category_name;
@@ -97,6 +100,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'category_name' => 'required | max:20' ,
+        ]);
         
         $category = Category::findOrFail($id);
        // Getting values from the blade template form

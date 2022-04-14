@@ -75,7 +75,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/categories">All Category</a></li>
+                    @if (Auth::check() && Auth::user()->role == "admin")
                     <li><a class="dropdown-item" href="{{ url('/categories/create') }}">Add New Category</a></li>
+                    @endif
                 </ul>
                 </li>
             </ul>
@@ -98,6 +100,10 @@
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
+                                        @if (Auth::check() && Auth::user()->role == "admin")
+                                            (admin)
+                                        @endif
+
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

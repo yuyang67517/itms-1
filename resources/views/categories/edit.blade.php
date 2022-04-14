@@ -13,6 +13,8 @@
         </div>
 
         <div class="form-group mb-2">
+            <span style="color: red">@error('category_name'){{ $message }}@enderror</span>
+            <br>
             <label for="name">New Category Name:</label>
             <input type="text" class="form-control" name="category_name" value="{{ $category->category_name }}" />
         </div>

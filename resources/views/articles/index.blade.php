@@ -15,12 +15,18 @@
 
         @foreach($articles as $article)
 
-          <div class="jumbotron">    
+          <div class="jumbotron mb-2">    
             <h2>{{$article['title']}}</h2>
             <h6>{{$article['description']}}</h6>
-            <a href = {{ URL::to('articles/' . $article->id) }}>Show More..</a>
-            <a href = {{ URL::to('articles/' . $article->id . '/edit') }}>Edit</a>
-            <p></p>
+            <a class="btn btn-primary btn-lg" href={{ URL::to('articles/' .$article->id) }}>Show More</a>
+            @can('delete', $article)
+            <a class="btn btn-success btn-lg" href = {{ URL::to('articles/' . $article->id . '/edit') }}>Edit</a>
+            <form class="btn btn-danger btn-sm" action="{{url('articles/'.$article->id)}}" method="post">
+              @method('DELETE')
+              @csrf
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form> 
+            @endcan
           </div>                
         @endforeach
         
