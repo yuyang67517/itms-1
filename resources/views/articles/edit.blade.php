@@ -10,15 +10,15 @@
 
 
         <div class="form-group">
-        <span style="color: red">@error('title'){{ $message }}@enderror</span>
-        <br>
+            <span style="color: red">@error('title'){{ $message }}@enderror</span>
+            <br>
             <label for="title">Title:</label>
             <input type="text" class="form-control" name="title" value="{{ $article->title }}" />
         </div>
 
         <div class="form-group">
-        <span style="color: red">@error('description'){{ $message }}@enderror</span>
-        <br>
+            <span style="color: red">@error('description'){{ $message }}@enderror</span>
+            <br>
             <label for="description">Description:</label>
             <input type="text" class="form-control" name="description" value="{{ $article->description }}" />
         </div>
