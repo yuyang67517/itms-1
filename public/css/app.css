@@ -83,7 +83,6 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
 }
 
 hr {
@@ -92,49 +91,6 @@ hr {
   background-color: currentColor;
   border: 0;
   opacity: 0.25;
-}
-
-.navbar-brand{
-  text-shadow: 0;
-  color: red;
-  font-size:200px;
-}
-
-.app{
-  margin:0;
-}
-
-.jumbotron-up{
-  padding: 50px;  
-  margin: 0;
-
-}
-.jumbotron{
-  background-color: #f0f0f0;
-  border-radius: 15px;
-}
-.jumbotron-footer{
-  background-color: #d1cfcf;
-}
-
-.jumbotron-create{
-  background-color:white;
-}
-
-.container-crud{
-  text-align: left;
-}
-
-
-.container-description{
-  background-color: #ebe6e6;
-  border-radius: 15px;
-}
-
-.img-fluid{
-  margin: 0;
-  padding: 0;
-  width:100%;
 }
 
 hr:not([size]) {
@@ -204,13 +160,6 @@ abbr[data-bs-original-title] {
   cursor: help;
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
-}
-
-footer ul {
-  list-style: none;
-  display: block;
-  float: none;
-  padding-left: 0%;
 }
 
 address {

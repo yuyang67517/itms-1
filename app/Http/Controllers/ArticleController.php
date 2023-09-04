@@ -53,7 +53,7 @@ class ArticleController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required | max:20' ,
+            'title' => 'required | max:300' ,
             'description' => 'required | min:5',
         ]);
 
@@ -117,7 +117,7 @@ class ArticleController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required | max:20' ,
+            'title' => 'required | max:300' ,
             'description' => 'required | min:5',
         ]);
          $article = Article::findOrFail($id);

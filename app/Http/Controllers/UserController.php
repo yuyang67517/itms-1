@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user(); // Retrieve the authenticated user
+        return view('user.index', compact('user'));
     }
 
     /**
@@ -82,4 +84,11 @@ class UserController extends Controller
     {
         //
     }
+
+    public function assignedJobs()
+{
+    // Retrieve and display the list of assigned jobs for the logged-in user.
+    // Add your logic to fetch user assignments from the database.
+    return view('user.assigned-jobs');
+}
 }
