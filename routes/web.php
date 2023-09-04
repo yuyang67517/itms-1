@@ -66,9 +66,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/leave/index', 'AdminController@viewLeaveApplications')->name('admin.leave.index');
+    // Route::get('/admin/leave/index', 'AdminController@index')->name('admin.leave.index');
     Route::put('/admin/leave/{id}/approve', 'AdminController@approveLeave')->name('admin.leave.approve');
     Route::put('/admin/leave/{id}/reject', 'AdminController@rejectLeave')->name('admin.leave.reject');
+    Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.leave.index');
     
 });
 
@@ -78,15 +79,11 @@ Route::resource('timetables', TimetableController::class);
 Route::get('/timetables/manual', 'TimetableController@manual')->name('timetables.manual');
 Route::post('timetables/generate', 'TimetableController@generate')->name('timetables.generate');
 
-
-// Route::get('/admin/create-job', 'AdminController@createJob');
 Route::get('/admin/create-job', [App\Http\Controllers\AdminController::class, 'createJob'])->name('admin.create-job');
 Route::post('/admin/store-job', [App\Http\Controllers\AdminController::class, 'storeJob'])->name('admin.store-job');
 
 Route::get('/admin/assign-jobs', [App\Http\Controllers\AdminController::class, 'assignJobs'])->name('admin.assign-jobs');
-// Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'store-assignment'])->name('admin.store-assignment');
 Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'storeAssignment'])->name('admin.store-assignment');
-
 Route::get('/user/assigned-jobs', 'UserController@assignedJobs');
 
 // Route::get('/assigned-jobs', 'JobAssignmentController@index')->name('assigned-jobs.index');
@@ -98,6 +95,9 @@ Route::get('/fullscreen', [App\Http\Controllers\CrowdControlController::class,'d
 
 
 Route::resource('goods', GoodController::class);
+Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'viewLeaveApplications'])->name('admin.leave.index');
+    
+    
 
 
 

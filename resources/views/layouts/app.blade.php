@@ -80,7 +80,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/goods">Goods</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
-                    <li><a class="dropdown-item" href="{{ url('/categories/create') }}">Transaction</a></li>
+                    <li><a class="dropdown-item" href="#">Transaction</a></li>
                     @endif
                 </ul>
                 </li>
@@ -111,7 +111,8 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/leave">Leave Application</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
-                    <li><a class="dropdown-item" href="/leave/all">All Application</a></li>
+                    <li><a class="dropdown-item" href="/admin/leave/index">All Application</a></li>
+                    
                     @endif
                 </ul>
                 </li>

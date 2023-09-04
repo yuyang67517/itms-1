@@ -1,24 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Leave Applications  ffffff</h1>
-    @foreach ($leaveApplications as $leave)
-        <div>
-            <p>Applicant: {{ $leave->user->name }}</p>
-            <p>Date of Application: {{ $leave->date_of_application }}</p>
-            <p>Days: {{ $leave->days }}</p>
-            <p>Reason: {{ $leave->reason }}</p>
-            <p>Status: {{ $leave->status }}</p>
-            <form method="POST" action="{{ route('admin.leave.approve', $leave->id) }}">
-                @csrf
-                @method('put')
-                <button type="submit">Approve</button>
-            </form>
-            <form method="POST" action="{{ route('admin.leave.reject', $leave->id) }}">
-                @csrf
-                @method('put')
-                <button type="submit">Reject</button>
-            </form>
-        </div>
-    @endforeach
+    <div class="container">
+        <h1>All Leave Applications</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date of Application</th>
+                    <th>Number of Days</th>
+                    <th>Reason for Leave</th>
+                    <th>Status</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($leaveApplications as $leave)
+                    <tr>
+                        <td>{{ $leave->date_of_application }}</td>
+                        <td>{{ $leave->days }}</td>
+                        <td>{{ $leave->reason }}</td>
+                        <td>{{ $leave->status }}</td>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection
+
+
+
