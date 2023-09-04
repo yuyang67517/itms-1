@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobAssignmentController;
 use App\Http\Controllers\CrowdControlController;
 use App\Http\Controllers\GoodController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,6 @@ Route::get('/', function () {
 });
 
 Route::resource('articles', ArticleController::class);
-Route::resource('categories', CategoryController::class);
 
 Auth::routes();
 
@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/leave/history', [LeaveController::class, 'userLeaveHistory'])->name('leave.history');
     Route::get('/leave/all', [App\Http\Controllers\LeaveController::class, 'allLeave'])->name('leave.all');
 
+    Route::put('/profile/update_photo', [UserProfileController::class, 'updatePhoto'])->name('profile.update_photo');
    
     
 });
@@ -74,19 +75,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 
-Route::resource('positions', PositionController::class);
-Route::resource('timetables', TimetableController::class);
-Route::get('/timetables/manual', 'TimetableController@manual')->name('timetables.manual');
-Route::post('timetables/generate', 'TimetableController@generate')->name('timetables.generate');
-
 Route::get('/admin/create-job', [App\Http\Controllers\AdminController::class, 'createJob'])->name('admin.create-job');
 Route::post('/admin/store-job', [App\Http\Controllers\AdminController::class, 'storeJob'])->name('admin.store-job');
 
 Route::get('/admin/assign-jobs', [App\Http\Controllers\AdminController::class, 'assignJobs'])->name('admin.assign-jobs');
 Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'storeAssignment'])->name('admin.store-assignment');
 Route::get('/user/assigned-jobs', 'UserController@assignedJobs');
-
-// Route::get('/assigned-jobs', 'JobAssignmentController@index')->name('assigned-jobs.index');
 Route::get('/assigned-jobs', [App\Http\Controllers\JobAssignmentController::class,'index'])->name('assigned-jobs.index');
 
 Route::get('/crowd-control', [App\Http\Controllers\CrowdControlController::class,'index'])->name('crowd-control.index');
@@ -96,6 +90,11 @@ Route::get('/fullscreen', [App\Http\Controllers\CrowdControlController::class,'d
 
 Route::resource('goods', GoodController::class);
 Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'viewLeaveApplications'])->name('admin.leave.index');
+Route::get('/users', [App\Http\Controllers\UserController::class,'index'])->name('users.index');
+// Route::get('/user/profile/{id}', 'UserController@showProfile')->name('user.profile');
+Route::get('/user/profile/{id}', [UserProfileController::class, 'showProfile'])->name('user.profile');
+// Route::get('/user/profile/{id}', 'UserProfileController@showProfile')->name('user.profile');
+
     
     
 

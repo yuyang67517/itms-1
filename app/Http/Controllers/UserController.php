@@ -13,10 +13,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /*
     public function index()
     {
         $user = Auth::user(); // Retrieve the authenticated user
         return view('user.index', compact('user'));
+    }
+    */
+    public function index()
+    {
+        // Retrieve all users from the 'users' table
+        $users = User::all();
+
+        return view('user.index', compact('users'));
     }
 
     /**

@@ -135,6 +135,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/profile">View Profile</a></li>
+                    @if (Auth::check() && Auth::user()->role == "admin")
+                    <li><a class="dropdown-item" href="{{ url('/users') }}">All User</a></li>
+                    @endif
                 </ul>
                 </li>
                 <li class="nav-item dropdown">

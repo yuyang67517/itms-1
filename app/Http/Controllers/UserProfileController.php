@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 
 class UserProfileController extends Controller
@@ -50,6 +52,35 @@ class UserProfileController extends Controller
 
         return redirect('profile')->with('success', 'Profile updated successfully');
     }
+
+    public function updatePhoto(Request $request)
+{
+    $user = Auth::user();
+
+    if ($request->hasFile('profile_photo')) {
+        $profilePhotoPath = $request->file('profile_photo')->store('profile_photos', 'public');
+        $user->profile_photo = $profilePhotoPath;
+        $user->save();
+    }
+
+    return redirect('profile')->with('success', 'Profile photo updated successfully');
+}
+
+public function showProfile($id)
+{
+    $user = User::find($id);
+    // dd($user);
+
+    if (!$user) {
+        // Handle user not found, e.g., display an error message or redirect
+        return redirect()->back()->with('error', 'User not found.');
+    }
+
+    return view('user.profile', compact('user'));
+}
+
+
+
 }
 
 
