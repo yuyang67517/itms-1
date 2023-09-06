@@ -53,7 +53,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">TMS</a>
+            <a class="navbar-brand" href="{{ url('/') }}">ITMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -202,6 +202,71 @@
         </main>
     </div>
     
-    <!-- ... (remaining HTML code, including footer) ... -->
+     <!-- Page footer begins -->
+
+ <footer class="bg-light text-center text-lg-start">
+    <div class="jumbotron-footer">    
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><strong>About Us</strong></h5>
+
+            <p>
+            Internal Task Management - ITMS
+            <br>
+            This is a webiste that used to manage various internal task in event management.
+            This website is built by ERIC LIM YU YANG for the purpose of FYP2.
+            
+            </p>
+            
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase"><strong>Contact Us</strong></h5>
+
+            <p>
+            Should you have any queries, please do not hesitate to contact us. Below are some ways to reach us.
+            </p>
+            <p>
+            <i class="fa fa-envelope"></i> customercare@gmail.com 
+            </p>
+            <p>
+            <i class="fa fa-phone"></i> +60-12 345 6789
+            </p>
+        </div>
+        <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+        <div class="footer">
+            <div class="container text-center">
+                
+                <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+                    <section>
+                        <p><strong>Follow Us</strong></p>
+                        <button onclick="location.href='http://www.facebook.com'" class="btn"><i class="fa fa-facebook fa-3x"></i></button>
+                        <button onclick="location.href='http://www.instagram.com'" class="btn"><i class="fa fa-instagram fa-3x"></i></button>
+                        <button onclick="location.href='http://www.twitter.com'" class="btn"><i class="fa fa-twitter fa-3x"></i></button>
+                        <button onclick="location.href='http://www.github.com'" class="btn"><i class="fa fa-github fa-3x"></i></button>
+                        
+                    </section>
+                    <!-- Section: Social media -->
+                </div>
+            <div class="mt-3">
+                &copy; {{ date('Y')}}. All rights reserved.
+            </div>
+                
+            </div>
+        </div>
+    </div>
+ </footer>
 </body>
 </html>

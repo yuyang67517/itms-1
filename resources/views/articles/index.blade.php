@@ -7,7 +7,7 @@
     <div class="container-title">
       <div class="container-title text-center">
         <h1 class="display-4">Important Announcement</h1>
-      <!-- Add any additional content here -->
+ 
     </div> 
     <div class="container-fluid">
       <div class="container-article">

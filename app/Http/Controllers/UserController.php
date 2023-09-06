@@ -33,10 +33,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,11 +40,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
+  
     /**
      * Display the specified resource.
      *
@@ -100,4 +92,34 @@ class UserController extends Controller
     // Add your logic to fetch user assignments from the database.
     return view('user.assigned-jobs');
 }
+
+public function create()
+{
+    return view('user.create'); // Create a new Blade view for the user creation form
+}
+
+public function store(Request $request)
+{
+    // Validate the form data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:191',
+        'email' => 'required|email|unique:users|max:191',
+        'password' => 'required|string|min:8',
+       
+    ]);
+
+    // Create a new user
+    User::create([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'password' => bcrypt($validatedData['password']),
+        
+    ]);
+
+    // Redirect to a success page or any other desired action
+    return redirect()->route('users.index')->with('success', 'User created successfully');
+
+}
+
+
 }

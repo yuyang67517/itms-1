@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<h1>Feedback</h1>
+<h1 class="display-4">Feedback</h1>
 
 <br>
 <form action="{{ route('feedback.filter') }}" method="GET">
@@ -43,7 +43,20 @@
 
     @endif
                 </td>
-                <td>{{ $item->status }}</td>
+                <td>{{ $item->status }}
+                
+                        @if ($item->status === 'read')
+                            <span class="text-success">
+                                <i class="fa fa-check"></i> 
+                            </span>
+                           
+                        @elseif ($item->status === 'unread')
+                            <span class="text-danger">
+                                <i class="fa fa-times"></i> 
+                            </span>
+                        @endif
+                    
+                </td>
                 <td>{{ date('Y-m-d', strtotime($item->created_at)) }}</td> 
                 
                 <td>

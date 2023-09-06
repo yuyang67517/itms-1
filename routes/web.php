@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobAssignmentController;
 use App\Http\Controllers\CrowdControlController;
 use App\Http\Controllers\GoodController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 
 /*
@@ -91,9 +92,10 @@ Route::get('/fullscreen', [App\Http\Controllers\CrowdControlController::class,'d
 Route::resource('goods', GoodController::class);
 Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'viewLeaveApplications'])->name('admin.leave.index');
 Route::get('/users', [App\Http\Controllers\UserController::class,'index'])->name('users.index');
-// Route::get('/user/profile/{id}', 'UserController@showProfile')->name('user.profile');
 Route::get('/user/profile/{id}', [UserProfileController::class, 'showProfile'])->name('user.profile');
-// Route::get('/user/profile/{id}', 'UserProfileController@showProfile')->name('user.profile');
+Route::get('/users/create', [UserController::class,'create'])->name('user.create');
+Route::post('/users/store', [UserController::class,'store'])->name('user.store');
+
 
     
     
