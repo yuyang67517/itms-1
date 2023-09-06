@@ -40,7 +40,7 @@
                                 </span>
                             @else
                                 <span class="text-warning">
-                                    <i class="fa fa-clock"></i>Pending
+                                    <i class="fa fa-clock-o"></i>Pending
                                 </span>
                             @endif
                         </td>

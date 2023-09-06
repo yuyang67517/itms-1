@@ -11,7 +11,7 @@
                     <th>Number of Days</th>
                     <th>Reason for Leave</th>
                     <th>Status</th>
-                    <!-- Add more columns as needed -->
+                  
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                         <td>{{ $leave->days }}</td>
                         <td>{{ $leave->reason }}</td>
                         <td>{{ $leave->status }}</td>
-                        <!-- Add more columns as needed -->
+                     
                     </tr>
                 @endforeach
             </tbody>

@@ -19,7 +19,7 @@
             <p>Updated by: {{ $latestData->user->name }}</p>
         </div>
         <div class="col-md-6">
-            <!-- Empty Table for Crowd Info -->
+     
             <h2>Crowd Info</h2>
             <table class="table">
                 <thead>
@@ -71,7 +71,7 @@
 
     
 
-    <!-- Additional div for displaying information with enhanced design -->
+ 
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="alert alert-info">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="info-box">
-                        <h4>Current Number Inside</h4>
+                        <h4>Current Number of People Inside:</h4>
                         <p>{{ $latestData->current_inside }}</p>
                     </div>
                 </div>

@@ -70,7 +70,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/articles">All Announcement</a></li>
+                    @if (Auth::check() && Auth::user()->role == "admin")
                     <li><a class="dropdown-item" href="{{ url('/articles/create') }}">Create Announcement</a></li>
+                    @endif
                 </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -173,6 +175,8 @@
                                     
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    
                                         
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
