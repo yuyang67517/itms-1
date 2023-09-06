@@ -64,7 +64,7 @@
         <form action="{{ route('feedback.markAsRead', ['feedback' => $item->feedback_id]) }}" method="POST">
             @csrf
             @method('PATCH')
-            <button type="submit" class="btn btn-success">Mark as Read</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Mark as Read</button>
         </form>
     @endif
     

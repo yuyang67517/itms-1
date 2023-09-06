@@ -33,23 +33,6 @@
                     <th>Reason for Leave:</th>
                     <td>{{ $leave->reason }}</td>
                 </tr>
-                @if ($leave->supported_document)
-                    <tr>
-                        <th>Supported Document:</th>
-                        <td>
-                            <a href="{{ asset('storage/' . $leave->supported_document) }}" target="_blank">
-                                View Document
-                            </a>
-                        </td>
-                    </tr>
-
-                @else
-                <tr>
-                    <th>Supported Document</th>
-                    <td>N/A</td>
-                </tr>
-
-                @endif
                 <tr>
                     <th>Status:</th>
                     <td>{{ $leave->status }}</td>

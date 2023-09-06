@@ -12,6 +12,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>Good ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -22,19 +23,21 @@
         <tbody>
             @foreach($goods as $good)
             <tr>
+                <td>{{ $good->id }}</td>
                 <td>{{ $good->name }}</td>
                 <td>{{ $good->description }}</td>
                 <td>{{ $good->price }}</td>
                 <td>{{ $good->quantity }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('goods.edit', $good->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('goods.edit', $good->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                     
                     @if (Auth::check() && Auth::user()->role == "admin")
                     
                         <form action="{{ route('goods.destroy', $good->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            
+                            <button type="submit" class="btn btn-danger" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </form>
                     @endif
                 </td>

@@ -46,7 +46,7 @@
         <br>
 
         <!-- Display leave application history in a table -->
-    <h2>Leave Application History</h2>
+    <h2>My Leave Application History</h2>
     <table class="table">
         <thead>
             <tr>
