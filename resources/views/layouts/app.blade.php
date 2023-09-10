@@ -82,7 +82,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/goods">Goods</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
-                    <li><a class="dropdown-item" href="#">Transaction</a></li>
+                    <li><a class="dropdown-item" href="/sales">Daily Sales</a></li>
                     @endif
                 </ul>
                 </li>

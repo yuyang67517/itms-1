@@ -13,6 +13,7 @@ use App\Http\Controllers\CrowdControlController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\SalesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,12 @@ Route::get('/users', [App\Http\Controllers\UserController::class,'index'])->name
 Route::get('/user/profile/{id}', [UserProfileController::class, 'showProfile'])->name('user.profile');
 Route::get('/users/create', [UserController::class,'create'])->name('user.create');
 Route::post('/users/store', [UserController::class,'store'])->name('user.store');
+
+Route::get('/sales', [App\Http\Controllers\SalesController::class, 'index'])->name('sales.index');
+Route::post('/sales', [App\Http\Controllers\SalesController::class, 'store'])->name('sales.store');
+Route::get('/sales/{id}', [App\Http\Controllers\SalesController::class, 'show'])->name('sales.show');
+Route::get('/sales/{id}/edit', [App\Http\Controllers\SalesController::class, 'edit'])->name('sales.edit');
+Route::put('/sales/{id}', [App\Http\Controllers\SalesController::class, 'update'])->name('sales.update');
 
 
     
