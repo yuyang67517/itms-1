@@ -7,8 +7,8 @@
     <!-- Date Filter Form -->
     <form method="GET" action="{{ route('assigned-jobs.index') }}" class="mb-4">
         <div class="form-group">
-            <label for="date_filter">Filter by Date:</label>
-            <select name="date_filter" id="date_filter" class="form-control">
+            <label for="date_filter" >Filter by Date:</label>
+            <select name="date_filter" id="date_filter" class="form-control" >
                 <option value="today" {{ $dateFilter === 'today' ? 'selected' : '' }}>
                     Today
                 </option>

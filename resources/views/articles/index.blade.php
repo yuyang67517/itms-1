@@ -7,7 +7,7 @@
     <div class="container-title">
       <div class="container-title text-center">
         <h1 class="display-4">Important Announcement</h1>
-      <!-- Add any additional content here -->
+ 
     </div> 
     <div class="container-fluid">
       <div class="container-article">
@@ -20,12 +20,16 @@
               <h6 class="card-subtitle mb-2 text-muted">{{$article['description']}}</h6>
               <a class="btn btn-primary btn-lg" href="{{ URL::to('articles/' .$article->id) }}">Show More</a>
               @can('delete', $article)
-                <a class="btn btn-success btn-lg" href="{{ URL::to('articles/' . $article->id . '/edit') }}">Edit</a>
-                <form class="btn btn-danger btn-sm" action="{{url('articles/'.$article->id)}}" method="post">
+                <a class="btn btn-success btn-lg" href="{{ URL::to('articles/' . $article->id . '/edit') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                 
+
+                <form class="btn btn-danger btn-lg" action="{{url('articles/'.$article->id)}}" method="post">
                   @method('DELETE')
                   @csrf
-                  <button class="btn btn-danger" type="submit">Delete</button>
+                  <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button>
                 </form> 
+               
+
               @endcan
             </div>
           </div>                

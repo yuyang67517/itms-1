@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Crowd Control</h1>
+    <h1 class="display-4">Crowd Control</h1>
     <br>
 
     <!-- Real-Time Display -->
@@ -10,14 +10,16 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Real-Time Information</h2>
-            <p>Current Number of People Inside: {{ $latestData->current_inside }}</p>
+            <br>
+            
             <p>Current Total Entered: {{ $latestData->entered }}</p>
             <p>Current Total Exited: {{ $latestData->exited }}</p>
-            <p>Last Update: {{ $latestData->timestamp }}</p>
+            <p style="font-weight: bold; color: red;">Current Number of People Inside: {{ $latestData->current_inside }}</p>
+            <p style="font-weight: bold; color: red;">Last Update: {{ $latestData->timestamp }}</p>
             <p>Updated by: {{ $latestData->user->name }}</p>
         </div>
         <div class="col-md-6">
-            <!-- Empty Table for Crowd Info -->
+     
             <h2>Crowd Info</h2>
             <table class="table">
                 <thead>
@@ -48,7 +50,10 @@
         </div>
     </div>
     @endif
-
+    <br>
+    <br>
+    <br>
+    <h2>Update Number Here</h2>
     <!-- Data Entry Form -->
     <form action="{{ route('crowd-control.store') }}" method="POST">
         @csrf
@@ -66,7 +71,7 @@
 
     
 
-    <!-- Additional div for displaying information with enhanced design -->
+ 
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="alert alert-info">
@@ -80,7 +85,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="info-box">
-                        <h4>Current Number Inside</h4>
+                        <h4>Current Number of People Inside:</h4>
                         <p>{{ $latestData->current_inside }}</p>
                     </div>
                 </div>

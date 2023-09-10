@@ -32,12 +32,13 @@
                 <label for="reason">Reason for Leave:</label>
                 <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
             </div>
-
+            <!--
             <div class="form-group">
                 <label for="supported_document">Supported Document (Optional):</label>
                 <input type="file" class="form-control-file" id="supported_document" name="supported_document">
             </div>
-
+-->
+            <br>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
@@ -45,7 +46,7 @@
         <br>
 
         <!-- Display leave application history in a table -->
-    <h2>Leave Application History</h2>
+    <h2>My Leave Application History</h2>
     <table class="table">
         <thead>
             <tr>
@@ -53,7 +54,6 @@
                 <th>Number of Days</th>
                 <th>Reason</th>
                 <th>Status</th>
-                <th>Supported Document</th>
             </tr>
         </thead>
         <tbody>
@@ -62,14 +62,22 @@
                 <td>{{ $leave->date_of_application }}</td>
                 <td>{{ $leave->days }}</td>
                 <td>{{ $leave->reason }}</td>
-                <td>{{ $leave->status }}</td>
-                <td> 
-                    @if ($leave->supported_document)
-                        <a href="{{ asset('storage/' . $leave->supported_document) }}" target="_blank">View Document</a>
-                    @else
-                        N/A
-                    @endif
-                </td>
+           
+                <td>
+                        @if ($leave->status == 'approved')
+                                <span class="text-success">
+                                    <i class="fa fa-check"></i> Approved
+                                </span>
+                            @elseif ($leave->status == 'rejected')
+                                <span class="text-danger">
+                                    <i class="fa fa-times"></i> Rejected
+                                </span>
+                            @else
+                                <span class="text-warning">
+                                    <i class="fa fa-clock-o"></i>Pending
+                                </span>
+                            @endif
+                        </td>
             </tr>
             @endforeach
         </tbody>

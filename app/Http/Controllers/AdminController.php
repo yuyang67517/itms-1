@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Leave;
 use App\Models\Job;
@@ -91,32 +92,13 @@ public function storeAssignment(Request $request)
     return redirect()->route('admin.assign-jobs')->with('success', 'Assignment saved successfully.');
 }
 
-/* 
-public function storeAssignment(Request $request)
+/*
+public function index()
 {
-    // Validate the form data
-   
-    $validatedData = $request->validate([
-        'user_id' => 'required|exists:users,id',
-        'job_id' => 'required|exists:jobs,id', 
-        'job_title' => 'required|string|max:255',
-        'job_description' => 'required|string',
-    ]);
+    $leaveApplications = Leave::where('leave_id', auth()->user()->id)->get(); // Use 'id' for user ID
 
-    // Create a new job assignment and populate it with the validated data
-    $jobAssignment = new JobAssignment();
-    $jobAssignment->user_id = $validatedData['user_id'];
-    $jobAssignment->job_id = $validatedData['job_id'];
-    $jobAssignment->job_title = $validatedData['job_title'];
-    $jobAssignment->job_description = $validatedData['job_description'];
-    $jobAssignment->assignment_status = 'not started'; // Set initial status
-    // Add other fields as needed
-
-    // Save the job assignment to the database
-    $jobAssignment->save();
-
-    // Redirect back to the job assignment form with a success message
-    return redirect()->route('admin.assign-job')->with('success', 'Job assigned successfully.');
+    return view('leave.leave_form', compact('leaveApplications'));
 }
 */
+
 }

@@ -4,3 +4,15 @@
     border: 1px solid #ced4da; /* Add a border for separation */
   }
   
+
+
+.profile-photo {
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Center content vertically */
+}
+
+.profile-image {
+  max-width: 100%; /* Limit the maximum width to the container's width */
+  max-height: 100px; /* Set a maximum height as needed */
+}

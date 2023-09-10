@@ -11,6 +11,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobAssignmentController;
 use App\Http\Controllers\CrowdControlController;
 use App\Http\Controllers\GoodController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ReportsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +33,6 @@ Route::get('/', function () {
 });
 
 Route::resource('articles', ArticleController::class);
-Route::resource('categories', CategoryController::class);
 
 Auth::routes();
 
@@ -61,35 +65,26 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/leave/history', [LeaveController::class, 'userLeaveHistory'])->name('leave.history');
     Route::get('/leave/all', [App\Http\Controllers\LeaveController::class, 'allLeave'])->name('leave.all');
 
+    Route::put('/profile/update_photo', [UserProfileController::class, 'updatePhoto'])->name('profile.update_photo');
    
     
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/leave/index', 'AdminController@viewLeaveApplications')->name('admin.leave.index');
+    // Route::get('/admin/leave/index', 'AdminController@index')->name('admin.leave.index');
     Route::put('/admin/leave/{id}/approve', 'AdminController@approveLeave')->name('admin.leave.approve');
     Route::put('/admin/leave/{id}/reject', 'AdminController@rejectLeave')->name('admin.leave.reject');
+    Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.leave.index');
     
 });
 
 
-Route::resource('positions', PositionController::class);
-Route::resource('timetables', TimetableController::class);
-Route::get('/timetables/manual', 'TimetableController@manual')->name('timetables.manual');
-Route::post('timetables/generate', 'TimetableController@generate')->name('timetables.generate');
-
-
-// Route::get('/admin/create-job', 'AdminController@createJob');
 Route::get('/admin/create-job', [App\Http\Controllers\AdminController::class, 'createJob'])->name('admin.create-job');
 Route::post('/admin/store-job', [App\Http\Controllers\AdminController::class, 'storeJob'])->name('admin.store-job');
 
 Route::get('/admin/assign-jobs', [App\Http\Controllers\AdminController::class, 'assignJobs'])->name('admin.assign-jobs');
-// Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'store-assignment'])->name('admin.store-assignment');
 Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'storeAssignment'])->name('admin.store-assignment');
-
 Route::get('/user/assigned-jobs', 'UserController@assignedJobs');
-
-// Route::get('/assigned-jobs', 'JobAssignmentController@index')->name('assigned-jobs.index');
 Route::get('/assigned-jobs', [App\Http\Controllers\JobAssignmentController::class,'index'])->name('assigned-jobs.index');
 
 Route::get('/crowd-control', [App\Http\Controllers\CrowdControlController::class,'index'])->name('crowd-control.index');
@@ -98,6 +93,22 @@ Route::get('/fullscreen', [App\Http\Controllers\CrowdControlController::class,'d
 
 
 Route::resource('goods', GoodController::class);
+Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'viewLeaveApplications'])->name('admin.leave.index');
+Route::get('/users', [App\Http\Controllers\UserController::class,'index'])->name('users.index');
+Route::get('/user/profile/{id}', [UserProfileController::class, 'showProfile'])->name('user.profile');
+Route::get('/users/create', [UserController::class,'create'])->name('user.create');
+Route::post('/users/store', [UserController::class,'store'])->name('user.store');
+
+Route::get('/sales', [App\Http\Controllers\SalesController::class, 'index'])->name('sales.index');
+Route::post('/sales', [App\Http\Controllers\SalesController::class, 'store'])->name('sales.store');
+Route::get('/sales/{id}', [App\Http\Controllers\SalesController::class, 'show'])->name('sales.show');
+Route::get('/sales/{id}/edit', [App\Http\Controllers\SalesController::class, 'edit'])->name('sales.edit');
+Route::put('/sales/{id}', [App\Http\Controllers\SalesController::class, 'update'])->name('sales.update');
+Route::get('/reports', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports.index');
+Route::get('/daily-report', [App\Http\Controllers\ReportsController::class,'dailyReport'])->name('daily-report');
+Route::get('/monthly-report', [App\Http\Controllers\ReportsController::class,'monthlyReport'])->name('monthly-report');
+    
+    
 
 
 

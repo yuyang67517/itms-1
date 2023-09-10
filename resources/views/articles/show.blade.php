@@ -6,15 +6,17 @@
     <h1 class="display-4">{{ $article['title'] }}</h1>
 
     <div class="my-3">
-        <h3 class="font-weight-bold">Author: {{ $article->user->name }}</h3>
+        <h3 class="font-weight-bold">Announce By: {{ $article->user->name }}</h3>
     </div>
 
 
     <hr>
 
+    <h3 class="card-title">Messages:</h3>
+
     <div class="card my-4">
         <div class="card-body" style="min-height: 200px;">
-            <h3 class="card-title">Messages:</h3>
+            
             <div class="container-description mt-3">
                 <p class="card-text" style="font-size: 18px;">{{ $article['description'] }}</p>
             </div>
