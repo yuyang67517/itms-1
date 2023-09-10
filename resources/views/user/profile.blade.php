@@ -50,15 +50,22 @@
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" class="form-control" required>
                         </div>
+                        <br>
 
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" value="{{ Auth::user()->email }}" class="form-control" required>
                         </div>
+                        <br>
 
                         <div class="form-group">
                             <label for="contact">Contact Number</label>
-                            <input type="contact" id="contact" name="contact" value="{{ Auth::user()->contact }}" class="form-control" required>
+                            
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">+60</span>
+                            </div>
+                            <input type="text" id="contact" name="contact" value="{{ Auth::user()->contact }}" class="form-control" required>
                         </div>
 
                         <br>

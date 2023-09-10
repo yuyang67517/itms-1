@@ -14,6 +14,8 @@ use App\Http\Controllers\GoodController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ReportsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -102,8 +104,9 @@ Route::post('/sales', [App\Http\Controllers\SalesController::class, 'store'])->n
 Route::get('/sales/{id}', [App\Http\Controllers\SalesController::class, 'show'])->name('sales.show');
 Route::get('/sales/{id}/edit', [App\Http\Controllers\SalesController::class, 'edit'])->name('sales.edit');
 Route::put('/sales/{id}', [App\Http\Controllers\SalesController::class, 'update'])->name('sales.update');
-
-
+Route::get('/reports', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports.index');
+Route::get('/daily-report', [App\Http\Controllers\ReportsController::class,'dailyReport'])->name('daily-report');
+Route::get('/monthly-report', [App\Http\Controllers\ReportsController::class,'monthlyReport'])->name('monthly-report');
     
     
 

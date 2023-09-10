@@ -17,8 +17,34 @@ class SalesController extends Controller
     {
         // Display sales data and form for admin
         $salesRecords = Sales::all();
+        $salesRecords = Sales::orderBy('date', 'desc')->get();
+
         return view('sales.index', compact('salesRecords'));
     }
+    
+/*
+    public function index(Request $request)
+    {
+        // Display sales data and form for admin
+        $salesRecords = Sales::all();
+        return view('sales.index', compact('salesRecords'));
+
+        // Get the start and end dates from the form input
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        // Query sales records based on the date range
+        $query = Sales::query();
+
+        if ($startDate && $endDate) {
+            $query->whereBetween('date', [$startDate, $endDate]);
+        }
+
+        $salesRecords = $query->get();
+
+        return view('sales.index', compact('salesRecords'));
+    }*/
+
 
     public function store(Request $request)
     {

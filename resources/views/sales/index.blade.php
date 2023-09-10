@@ -39,6 +39,9 @@
 
     <!-- Display existing sales records in a table -->
     <h2>Existing Sales Records</h2>
+
+    
+    
     <table class="table">
         <thead>
             <tr>

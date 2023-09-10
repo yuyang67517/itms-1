@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
 
     <!-- Fonts -->
@@ -83,6 +84,7 @@
                     <li><a class="dropdown-item" href="/goods">Goods</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
                     <li><a class="dropdown-item" href="/sales">Daily Sales</a></li>
+                    <li><a class="dropdown-item" href="/reports">Reports</a></li>
                     @endif
                 </ul>
                 </li>
@@ -219,7 +221,7 @@
             <h5 class="text-uppercase"><strong>About Us</strong></h5>
 
             <p>
-            Internal Task Management - ITMS
+            Internal Task Management System - ITMS
             <br>
             This is a webiste that used to manage various internal task in event management.
             This website is built by ERIC LIM YU YANG for the purpose of FYP2.
@@ -237,7 +239,7 @@
             Should you have any queries, please do not hesitate to contact us. Below are some ways to reach us.
             </p>
             <p>
-            <i class="fa fa-envelope"></i> customercare@gmail.com 
+            <i class="fa fa-envelope"></i> customercare@itms.com 
             </p>
             <p>
             <i class="fa fa-phone"></i> +60-12 345 6789
