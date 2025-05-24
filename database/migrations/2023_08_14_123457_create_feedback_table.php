@@ -14,7 +14,7 @@ class CreateFeedbackTable extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->feeback_id();
+            $table->id(); // Changed from $table->feeback_id();
             $table->enum('type', ['suggestion', 'complaint', 'issue', 'other']);
             $table->string('description');
             $table->timestamps();

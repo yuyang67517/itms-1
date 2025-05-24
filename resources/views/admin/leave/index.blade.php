@@ -23,18 +23,18 @@
             <tbody>
                 @foreach ($leaveApplications as $leave)
                     <tr>
-                        <td>{{ $leave->leave_id }}</td>
                         <td>{{ $leave->id }}</td>
+                        <td>{{ $leave->user_id }}</td>
                         <td>{{ $leave->date_of_application }}</td>
                         <td>{{ $leave->date_of_return }}</td>
                         <td>{{ $leave->days }}</td>
                         <td>{{ $leave->reason }}</td>
                         <td>
-                        @if ($leave->status == 'approved')
+                        @if ($leave->status == 'Approved')
                                 <span class="text-success">
                                     <i class="fa fa-check"></i> Approved
                                 </span>
-                            @elseif ($leave->status == 'rejected')
+                            @elseif ($leave->status == 'Rejected')
                                 <span class="text-danger">
                                     <i class="fa fa-times"></i> Rejected
                                 </span>
@@ -45,7 +45,9 @@
                             @endif
                         </td>
                         <td>
-                    <a href="{{ route('leave.user.show', ['leave_id' => $leave->leave_id]) }}" class="btn btn-primary">Update</a>
+                       
+                        <a href="{{ route('leave.user.show', ['leave_id' => $leave->id]) }}" class="btn btn-primary">Update</a>
+
                 </td>
                     </tr>
                 @endforeach

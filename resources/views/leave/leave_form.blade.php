@@ -12,6 +12,8 @@
 
         <form action="{{ route('leave.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+    
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
             <div class="form-group">
                 <label for="date_of_application">From:</label>
                 <input type="date" class="form-control" id="date_of_application" name="date_of_application" required>

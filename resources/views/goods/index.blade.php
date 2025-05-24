@@ -18,6 +18,7 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Actions</th>
+                <th>Last Updated</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@
                         </form>
                     @endif
                 </td>
+                <td>{{ $good->updated_at }}</td>
             </tr>
             @endforeach
         </tbody>

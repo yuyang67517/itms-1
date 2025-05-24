@@ -15,7 +15,10 @@
             <p>Current Total Entered: {{ $latestData->entered }}</p>
             <p>Current Total Exited: {{ $latestData->exited }}</p>
             <p style="font-weight: bold; color: red;">Current Number of People Inside: {{ $latestData->current_inside }}</p>
+            <!-- Add a null check for $latestData->timestamp -->
+            @if ($latestData->timestamp)
             <p style="font-weight: bold; color: red;">Last Update: {{ $latestData->timestamp }}</p>
+            @endif
             <p>Updated by: {{ $latestData->user->name }}</p>
         </div>
         <div class="col-md-6">
@@ -80,7 +83,10 @@
                 <div class="col-md-4">
                     <div class="info-box">
                         <h4>Last Updated Time</h4>
+                        <!-- Add a null check for $latestData->timestamp -->
+                        @if ($latestData->timestamp)
                         <p>{{ $latestData->timestamp }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -124,6 +130,4 @@
 </div>
 
 <script>
-    // JavaScript for real-time updates (you'll need to implement WebSocket or AJAX)
-</script>
-@endsection
+@endsection    

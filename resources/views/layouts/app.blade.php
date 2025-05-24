@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
 
@@ -125,9 +126,9 @@
                     Timetable
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/assigned-jobs">Check Timetable</a></li>
+                    <li><a class="dropdown-item" href="/assigned-jobs">Timetable</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
-                    <li><a class="dropdown-item" href="{{ url('/admin/create-job') }}">Create Job</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/admin/create-job') }}">Create/Update Job</a></li>
                     <li><a class="dropdown-item" href="{{ url('/admin/assign-jobs') }}">Assign Job</a></li>
                     @endif
                 </ul>
@@ -138,7 +139,7 @@
                     Profile
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/profile">View Profile</a></li>
+                    <li><a class="dropdown-item" href="/profile">My Profile</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
                     <li><a class="dropdown-item" href="{{ url('/users') }}">All User</a></li>
                     @endif

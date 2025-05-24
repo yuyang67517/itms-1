@@ -11,8 +11,6 @@ class CreateSalesTable extends Migration
      *
      * @return void
      */
-
-    
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
@@ -22,11 +20,10 @@ class CreateSalesTable extends Migration
             $table->decimal('credit_card_sales', 10, 2)->default(0);
             $table->decimal('ewallet_sales', 10, 2)->default(0);
             $table->decimal('total_sales', 10, 2)->default(0);
+            $table->unsignedBigInteger('user_id'); // Define the user_id column
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Add foreign key constraint
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
-       
-        
     }
 
     /**

@@ -27,12 +27,19 @@
                             </form>
                         </div>
                     <br>
-                    <div class="profile-details">
-        <label for="id">User ID:</label> <span>{{ Auth::user()->id }}</span><br>
-        <label for="created_at">Joined At:</label> <span>{{ Auth::user()->created_at->format('Y-m-d') }}</span><br>
-        <label for="role">Current Role:</label> <span>{{ Auth::user()->role }}</span><br>
-        <label for="status">Current Status:</label> <span>{{ Auth::user()->status }}</span><br>
-    </div>
+                   
+    <div class="profile-details">
+    <label for="id">User ID:</label> <span>{{ Auth::user()->id }}</span><br>
+    <label for="created_at">Joined At:</label>
+    @if(Auth::user()->created_at)
+        <span>{{ Auth::user()->created_at->format('Y-m-d') }}</span><br>
+    @else
+        <span>N/A</span><br>
+    @endif
+    <label for="role">Current Role:</label> <span>{{ Auth::user()->role }}</span><br>
+    <label for="status">Current Status:</label> <span>{{ Auth::user()->status }}</span><br>
+</div>
+
                 </div>
             </div>
         </div>

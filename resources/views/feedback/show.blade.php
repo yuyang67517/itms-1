@@ -14,7 +14,7 @@
     </div>
 
     <div class="mt-3">
-        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+        <a href="{{ route('feedback.index') }}" class="btn btn-secondary">Back</a>
     </div>
 </div>
 @endsection

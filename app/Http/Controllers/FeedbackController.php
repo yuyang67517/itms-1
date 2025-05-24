@@ -14,7 +14,6 @@ class FeedbackController extends Controller
 
     public function store(Request $request)
     {
-  
         $validatedData = $request->validate([
             'type' => 'required|in:suggestion,complaint,issue,other',
             'message' => 'required|string',
@@ -29,62 +28,35 @@ class FeedbackController extends Controller
     }
 
     public function index()
-{
-    $feedback = Feedback::all(); // Fetch all feedback entries
-    return view('feedback.index', compact('feedback'));
-}
-
-public function filter(Request $request)
-{
-    /*
-    $type = $request->input('type');
-
-    $query = Feedback::query();
-
-    // Check if type is provided and filter
-    if ($type) {
-        $query->where('type', $type);
-    }
-    
-
-    $feedback = $query->get();
-
-    return view('feedback.index', compact('feedback'));
-    */
-    
-
-    $status = $request->input('status');
-
-    $feedback = Feedback::query();
-
-    if ($status) {
-        $feedback->where('status', $status);
+    {
+        $feedback = Feedback::all();
+        return view('feedback.index', compact('feedback'));
     }
 
-    $feedback = $feedback->get();
+    public function filter(Request $request)
+    {
+        $status = $request->input('status');
+        $feedback = Feedback::query();
 
-    return view('feedback.index', compact('feedback'));
-}
+        if ($status) {
+            $feedback->where('status', $status);
+        }
 
-public function markAsRead(Feedback $feedback)
-{
-    $feedback->status = 'read';
-    $feedback->save();
-
-    return redirect()->route('feedback.index')->with('success', 'Feedback marked as read.');
-}
-
-public function show($feedback_id)
-{
-    $feedback = Feedback::where('feedback_id', $feedback_id)->first(); // Use 'feedback_id' as the column name
-
-    if (!$feedback) {
-        // Handle the case where the feedback with the provided ID doesn't exist
-        abort(404);
+        $feedback = $feedback->get();
+        return view('feedback.index', compact('feedback'));
     }
 
-    return view('feedback.show', ['feedback' => $feedback]);
-}
+    public function markAsRead(Feedback $feedback)
+    {
+        $feedback->status = 'read';
+        $feedback->save();
 
-}
+        return redirect()->route('feedback.index')->with('success', 'Feedback marked as read.');
+    }
 
+    public function show($feedback_id)
+    {
+        $feedback = Feedback::findOrFail($feedback_id);
+        return view('feedback.show', compact('feedback'));
+    }
+}

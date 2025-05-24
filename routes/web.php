@@ -46,6 +46,7 @@ Route::get('/feedback/index', [App\Http\Controllers\FeedbackController::class,'i
 Route::get('/feedback/filter', [App\Http\Controllers\FeedbackController::class,'filter'])->name('feedback.filter');
 Route::patch('/feedback/markAsRead/{feedback}', [App\Http\Controllers\FeedbackController::class,'markAsRead'])->name('feedback.markAsRead');
 Route::get('/feedback/{feedback_id}', [App\Http\Controllers\FeedbackController::class,'show'])->name('feedback.show');
+Route::patch('/feedback/markAsRead/{feedback}', 'FeedbackController@markAsRead')->name('feedback.markAsRead');
 
 
 Route::get('/profile', [App\Http\Controllers\UserProfileController::class, 'index'])->name('profile');
@@ -64,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/test', [LeaveController::class, 'test']);
     Route::get('/leave/history', [LeaveController::class, 'userLeaveHistory'])->name('leave.history');
     Route::get('/leave/all', [App\Http\Controllers\LeaveController::class, 'allLeave'])->name('leave.all');
+    Route::get('/leave/{leave_id}', [LeaveController::class, 'show'])->name('leave.user.show');
+    Route::get('/leave/{leave_id}', [App\Http\Controllers\LeaveController::class, 'show'])->name('leave.user.show');
 
     Route::put('/profile/update_photo', [UserProfileController::class, 'updatePhoto'])->name('profile.update_photo');
    
@@ -108,6 +111,10 @@ Route::get('/reports', [App\Http\Controllers\ReportsController::class, 'index'])
 Route::get('/daily-report', [App\Http\Controllers\ReportsController::class,'dailyReport'])->name('daily-report');
 Route::get('/monthly-report', [App\Http\Controllers\ReportsController::class,'monthlyReport'])->name('monthly-report');
     
+
+Route::get('/admin/edit-job/{id}', [App\Http\Controllers\AdminController::class,'editJob'])->name('edit-job');
+Route::get('/admin/delete-job/{id}', [App\Http\Controllers\AdminController::class,'deleteJob'])->name('delete-job');
+Route::put('/admin/update-job/{id}', [App\Http\Controllers\AdminController::class,'updateJob'])->name('update-job');
     
 
 

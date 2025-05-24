@@ -33,10 +33,15 @@ public function rejectLeave($id)
     return redirect()->back()->with('success', 'Leave application rejected.');
 }
 
+
 public function createJob()
 {
-    return view('admin.create-job');
+    // Retrieve existing jobs
+    $existingJobs = Job::all();
+
+    return view('admin.create-job', compact('existingJobs'));
 }
+
 
 public function storeJob(Request $request)
 {
@@ -44,15 +49,14 @@ public function storeJob(Request $request)
     $validatedData = $request->validate([
         'job_title' => 'required|string|max:255',
         'job_description' => 'required|string',
-        // Add validation rules for other fields as needed
+        
     ]);
 
     // Create a new job instance and populate it with the validated data
     $job = new Job();
     $job->job_title = $validatedData['job_title'];
     $job->job_description = $validatedData['job_description'];
-    $job->job_status = 'pending'; // You can set the initial status here, or use a default value in your database schema
-    // Add other fields as needed
+    
 
     // Save the job to the database
     $job->save();
@@ -61,6 +65,53 @@ public function storeJob(Request $request)
     return redirect('/admin/create-job')->with('success', 'Job created successfully.');
 
 }
+public function updateJob(Request $request, $id)
+{
+    // Validate the form data
+    $validatedData = $request->validate([
+        'job_title' => 'required|string|max:255',
+        'job_description' => 'required|string',
+        // Add validation rules for other fields as needed
+    ]);
+
+    // Find the job by ID
+    $job = Job::findOrFail($id);
+
+    // Update the job with the new data
+    $job->update([
+        'job_title' => $validatedData['job_title'],
+        'job_description' => $validatedData['job_description'],
+        // Update other fields as needed
+    ]);
+
+    // Redirect back to the job creation form with a success message
+    return redirect('/admin/create-job')->with('success', 'Job updated successfully.');
+}
+
+
+public function editJob($id)
+{
+    // Retrieve the job by ID
+    $job = Job::findOrFail($id);
+
+    // Return a view for editing the job, passing the job data
+    return view('admin.edit-job', compact('job'));
+}
+
+
+public function deleteJob($id)
+{
+    // Retrieve the job by ID
+    $job = Job::withTrashed()->findOrFail($id);
+
+    // Soft delete the job
+    $job->delete();
+
+    // Redirect back to the create-job page with a success message
+    return redirect('/admin/create-job')->with('success', 'Job deleted successfully.');
+}
+
+
 
 public function assignJobs()
 {

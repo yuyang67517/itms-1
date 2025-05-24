@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description" readonly>{{ $good->description }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="6"readonly>{{ $good->description }}</textarea>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
